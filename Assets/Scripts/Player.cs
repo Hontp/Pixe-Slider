@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public float minjumpSpeed;
     public float friction;
 
+    public float gravityWallSlideModifier;
+
 
     enum playerState {SLIDING, JUMPING, BRAKING};
     //playerState state = playerStat.SLIDING;
@@ -132,44 +134,14 @@ public class Player : MonoBehaviour
             {
 
                 float deltaPosition = Input.mousePosition.x - startTouchPos.x;
-                if ( Mathf.Abs(deltaPosition)  > swipeTolerance)
-                {
-                    if(Mathf.Abs(deltaPosition) < minjumpSpeed)
-                    {
-                        if (deltaPosition > 0)
-                        {
-                            if (touchingWallLeft)
-                            {
-                                rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                rb.AddForce(Vector2.right * minjumpSpeed * Time.deltaTime * jumpSpeed, ForceMode2D.Impulse);
-                                
-                                touchingWallLeft = false;
-                            touchingWallRight = false;
-                            rb.gravityScale = 2.5f;
-                            }
-                        }
-                        else
-                        {
-                            if (touchingWallRight)
-                            {
-                                rb.AddForce(Vector2.right * -minjumpSpeed * Time.deltaTime * jumpSpeed , ForceMode2D.Impulse);
-                                rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                touchingWallLeft = false;
-                                touchingWallRight = false;
-                                rb.gravityScale = 2.5f;
-                            }
-                        }
-
-                    }
-                    else
-                    {
+              
 
                         if(deltaPosition > 0)
                         {
                             if (touchingWallLeft)
                             {
-                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed , ForceMode2D.Impulse);
                                 rb.velocity = new Vector2(rb.velocity.x, 0f);
+                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier,0f), ForceMode2D.Impulse);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 rb.gravityScale = 2.5f;
@@ -180,15 +152,15 @@ public class Player : MonoBehaviour
                             if (touchingWallRight)
                             {
                                 rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed, ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed - new Vector2(-rb.velocity.y * gravityWallSlideModifier, 0f), ForceMode2D.Impulse);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 rb.gravityScale = 2.5f;
                             }
                         }
-                    }
+                    
 
-                }
+                
             }
 
         }
@@ -218,6 +190,12 @@ public class Player : MonoBehaviour
             
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.gravityScale = -2f;
+        }
+
+        if(collision.transform.CompareTag("floor"))
+        {
+            ws.pixelsPerTick += -rb.velocity.y;
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
         }
     }
 }
