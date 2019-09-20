@@ -205,10 +205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593437ac5b04b4f458ea8aa022cf19e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelsPerTick: 5
+  pixelsPerTick: 0
   scrollAmount: 0
   distance: 0
   y: 0
+  terminalVelocity: 15
+  minFallSpeed: 6
   previousYVelocity: 0
   player: {fileID: 1895770734}
 --- !u!1 &519420028
@@ -403,7 +405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -5.07}
   m_SizeDelta: {x: 160, y: 59.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &693270274
@@ -441,14 +443,14 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: c0727047acadfc143938712205e55143, type: 3}
+    m_FontSize: 36
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 62
     m_Alignment: 1
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1320,11 +1322,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4b51c089328314caa6b7c7504d6fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeTolerance: 3
+  swipeTolerance: 5
   jumpSpeed: 15
   touchingWallRight: 0
   touchingWallLeft: 1
   minjumpSpeed: 40
+  friction: 1
+  ws: {fileID: 511931319}
 --- !u!1 &1963342560
 GameObject:
   m_ObjectHideFlags: 0
