@@ -53,7 +53,7 @@ public class WallScroll : MonoBehaviour
 
 
         y += player.velocity.y * Time.deltaTime * 16f / 320f;
-        Rect uvRect = new Rect(0, -scrollAmount - y, 1, 1);
+        Rect uvRect = new Rect(0, -scrollAmount - y/2, 1, 1);
         walls.uvRect = uvRect;
 
     }

@@ -114,10 +114,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetAxis("Vertical") > 0f)
-            {
-                ws.pixelsPerTick -= Input.GetAxis("Vertical") * friction;
-            }
+
             if (Input.GetMouseButtonDown(0) && (touchingWallLeft || touchingWallRight))
             {
 
@@ -126,8 +123,8 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButton(0) && (touchingWallLeft || touchingWallRight))
             {
                 startTouchPos = Input.mousePosition;
+                ws.pixelsPerTick -=  friction;
 
-                
             }
 
 
@@ -155,8 +152,8 @@ public class Player : MonoBehaviour
                         {
                             if (touchingWallRight)
                             {
+                                rb.AddForce(Vector2.right * -minjumpSpeed * Time.deltaTime * jumpSpeed , ForceMode2D.Impulse);
                                 rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                rb.AddForce(Vector2.right * -minjumpSpeed * Time.deltaTime * jumpSpeed, ForceMode2D.Impulse);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 rb.gravityScale = 2.5f;
@@ -171,8 +168,8 @@ public class Player : MonoBehaviour
                         {
                             if (touchingWallLeft)
                             {
+                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed , ForceMode2D.Impulse);
                                 rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed, ForceMode2D.Impulse);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 rb.gravityScale = 2.5f;
