@@ -22,25 +22,47 @@ public class WallScroll : MonoBehaviour
 
     public int TILESIZE = 16;
 
+    public Vector2 startPos;
+
+    public float speed;
+    public Vector3 oldPos, deltaPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        walls = GetComponent<RawImage>();
+        //walls = GetComponent<RawImage>();
         y = 0f;
+
+        startPos = transform.position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        scrollAmount += (pixelsPerTick / tileSize) * Time.deltaTime;
-        if (player.velocity.y < 0f)
+        oldPos = transform.position;
+
+        if(player.velocity.y < 0)
+        {
+            speed = (-player.velocity.y + pixelsPerTick / tileSize) * Time.deltaTime;
+        }
+        else
+        {
+            speed = ( pixelsPerTick / tileSize) * Time.deltaTime;
+        }
+
+        distance += speed / 16;
+
+
+        scrollAmount += speed;
+       /* if (player.velocity.y < 0f)
         {
             distance -= player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE*20);
         }
         else
         {
-            distance += (pixelsPerTick / tileSize) * Time.deltaTime;
-        }
+           
+        }*/
 
 
         if (pixelsPerTick < minFallSpeed)
@@ -54,9 +76,17 @@ public class WallScroll : MonoBehaviour
         }
 
 
-        y += player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE * 20);
-        Rect uvRect = new Rect(0, -scrollAmount - y/2, 1, 1);
-        walls.uvRect = uvRect;
+        //y = 0;
+        //y += player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE * 20);
+        //Rect uvRect = new Rect(0, -scrollAmount - y/2, 1, 1);
+
+
+        //transform.position = new Vector2( startPos.x, (scrollAmount - y / 2)% (320/16) + startPos.y);
+        transform.position = new Vector2(startPos.x, (scrollAmount) % (320 / 16) + startPos.y);
+
+
+        deltaPos = oldPos - transform.position;
+        //walls.uvRect = uvRect;
 
     }
 }

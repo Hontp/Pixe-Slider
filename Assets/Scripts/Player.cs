@@ -143,8 +143,8 @@ public class Player : MonoBehaviour
                     {
                         if (touchingWallLeft)
                         {
-                            rb.velocity = new Vector2(rb.velocity.x, 0f);
-                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier,0f), ForceMode2D.Impulse);
+                            //rb.velocity = new Vector2(rb.velocity.x, 0f);
+                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
                             touchingWallLeft = false;
                             touchingWallRight = false;
                             rb.gravityScale = 2.5f;
@@ -154,8 +154,8 @@ public class Player : MonoBehaviour
                     {
                         if (touchingWallRight)
                         {
-                            rb.velocity = new Vector2(rb.velocity.x, 0f);
-                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed - new Vector2(-rb.velocity.y * gravityWallSlideModifier, 0f), ForceMode2D.Impulse);
+                            //rb.velocity = new Vector2(rb.velocity.x, 0f);
+                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed - new Vector2(-rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
                             touchingWallLeft = false;
                             touchingWallRight = false;
                             rb.gravityScale = 2.5f;
@@ -176,29 +176,33 @@ public class Player : MonoBehaviour
         if(collision.transform.CompareTag("leftWall"))
         {
             touchingWallLeft = true;
-            ws.pixelsPerTick -= rb.velocity.y;
-            rb.velocity = new Vector2(0, 0f);
-            rb.gravityScale = -2f;
+            //ws.speed -= rb.velocity.y;
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(0, ws.speed*16);
+            
         }
         if (collision.transform.CompareTag("rightWall"))
         {
             touchingWallRight = true;
-            ws.pixelsPerTick -= rb.velocity.y;
-            rb.velocity = new Vector2(0, 0f);
-            rb.gravityScale = -2f;
+            //ws.speed -= rb.velocity.y;
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(0, ws.speed*16);
+            
         }
 
         if (collision.transform.CompareTag("ceil"))
         {
-            
+            rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
-            rb.gravityScale = -2f;
+            
         }
 
         if(collision.transform.CompareTag("floor"))
         {
             ws.pixelsPerTick += -rb.velocity.y;
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.gravityScale = 0f;
+            //ws.speed -= rb.velocity.y;
+            rb.velocity = new Vector2(rb.velocity.x, ws.speed);
         }
     }
 }

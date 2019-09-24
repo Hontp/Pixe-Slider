@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6458675700558362492}
   - component: {fileID: -2176707541849491413}
+  - component: {fileID: -5107952066842787545}
   m_Layer: 0
   m_Name: leftspikeset
   m_TagString: Untagged
@@ -286,4 +287,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9556abda5dc2c04e81410354397ea7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitToDestroy: 3
+  WaitToDestroy: 10
+--- !u!114 &-5107952066842787545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8269964614783549322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0011c4535674f464883cd6caa0d91bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollAmount: 0
+  extraVal: 0
