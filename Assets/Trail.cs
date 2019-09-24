@@ -7,6 +7,8 @@ public class Trail : MonoBehaviour
     public WallScroll ws;
     private ParticleSystem ps;
     public Rigidbody2D player;
+
+    public int TILESIZE = 16;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class Trail : MonoBehaviour
     void Update()
     {
         var main = ps.main;
-        main.startSpeed = ws.scrollAmount + ws.y / 8;
+        main.startSpeed = ws.scrollAmount + ws.y / (TILESIZE/2);
 
         var emission = ps.emission;
         emission.rateOverTime = ws.scrollAmount + ws.y * 10;
