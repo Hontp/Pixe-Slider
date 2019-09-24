@@ -7,6 +7,7 @@ public class UI_FallDistance : MonoBehaviour
     public WallScroll ws;
     private Text label;
     public float distance;
+    public int TILESIZE = 16;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class UI_FallDistance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = ws.distance * 320f / 16f;
+        distance = ws.distance * (20 * TILESIZE) / TILESIZE;
         int distanceInt = (int)distance;
         label.text = distanceInt.ToString() + "m";
 
