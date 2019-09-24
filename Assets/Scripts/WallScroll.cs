@@ -20,6 +20,8 @@ public class WallScroll : MonoBehaviour
 
     public Rigidbody2D player;
 
+    public int TILESIZE = 16;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class WallScroll : MonoBehaviour
         scrollAmount += (pixelsPerTick / tileSize) * Time.deltaTime;
         if (player.velocity.y < 0f)
         {
-            distance -= player.velocity.y * Time.deltaTime * 16f / 320f;
+            distance -= player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE*20);
         }
         else
         {
@@ -52,7 +54,7 @@ public class WallScroll : MonoBehaviour
         }
 
 
-        y += player.velocity.y * Time.deltaTime * 16f / 320f;
+        y += player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE * 20);
         Rect uvRect = new Rect(0, -scrollAmount - y/2, 1, 1);
         walls.uvRect = uvRect;
 
