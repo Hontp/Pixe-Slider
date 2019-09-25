@@ -818,6 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ws: {fileID: 511931319}
   distance: 0
+  TILESIZE: 16
 --- !u!114 &693270275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9426,6 +9427,7 @@ MonoBehaviour:
   friction: 0.25
   gravityWallSlideModifier: 20
   startTouchTime: 0
+  swipeTimeCutOff: 0
   ws: {fileID: 511931319}
 --- !u!1 &1963342560
 GameObject:

@@ -1,34 +1,28 @@
 fileFormatVersion: 2
-guid: 11a49d06d0d1a824f8daa476ed14a664
+guid: 0ab25ba08e877ff4086ca7f35921de12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7494154722761801064
-    second: sawBlade_anim_0
+      213: 8356099801021780708
+    second: sawBlade_2_anim_0
   - first:
-      213: -2036763612845791974
-    second: sawBlade_anim_1
+      213: -2049426040197707728
+    second: sawBlade_2_anim_1
   - first:
-      213: -8070405271232474827
-    second: sawBlade_anim_2
+      213: -8041148296719981028
+    second: sawBlade_2_anim_2
   - first:
-      213: -5923346898606338072
-    second: sawBlade_anim_3
+      213: -8978218481502332286
+    second: sawBlade_2_anim_3
   - first:
-      213: 5768489430175080011
-    second: sawBlade_anim_4
+      213: -3142295030056700342
+    second: sawBlade_2_anim_4
   - first:
-      213: 9199850627753148402
-    second: sawBlade_anim_5
+      213: 2597165469991393374
+    second: sawBlade_2_anim_5
   - first:
-      213: 1284741969832044801
-    second: sawBlade_anim_6
-  - first:
-      213: -6534373026305692654
-    second: sawBlade_anim_7
-  - first:
-      213: -4182959367210650247
-    second: sawBlade_anim_8
+      213: 6104404040626090342
+    second: sawBlade_2_anim_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,206 +103,152 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sawBlade_anim_0
+      name: sawBlade_2_anim_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d76f7af951c6e6a43b50acacafcc9d81
-      internalID: -7494154722761801064
+      spriteID: 37352f1b49c32dd4a8a2328d8a7101b2
+      internalID: 8356099801021780708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_1
+      name: sawBlade_2_anim_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 0
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26c4b7e27f0a5264189dd87bdf6290d0
-      internalID: -2036763612845791974
+      spriteID: 296c65b1a57ed2742bf7788a279ad597
+      internalID: -2049426040197707728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_2
+      name: sawBlade_2_anim_2
       rect:
         serializedVersion: 2
         x: 33
         y: 0
-        width: 15
+        width: 14
         height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.464286, y: 0.50000006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16979cb968844ae4f819deeb67a2cdaa
-      internalID: -8070405271232474827
+      spriteID: ec2ac87aa39524d4b8facd86bb56d6e6
+      internalID: -8041148296719981028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_3
+      name: sawBlade_2_anim_3
       rect:
         serializedVersion: 2
         x: 49
-        y: 0
-        width: 15
-        height: 15
+        y: 1
+        width: 13
+        height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cf5e5a219e310c45ae1ab94248cf0c1
-      internalID: -5923346898606338072
+      spriteID: 3c1cf0fda5a8df24b975ceacf9280bed
+      internalID: -8978218481502332286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_4
+      name: sawBlade_2_anim_4
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10287d4d96d5dcc4d820af5a608bfb55
-      internalID: 5768489430175080011
+      spriteID: 4d079e16a9509374a819479ef49ccd5b
+      internalID: -3142295030056700342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_5
+      name: sawBlade_2_anim_5
       rect:
         serializedVersion: 2
-        x: 81
+        x: 80
         y: 0
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea6aced79b8f3524094e0fadaa23cd5a
-      internalID: 9199850627753148402
+      spriteID: 762f6f9f1375b9d40ac6e60ecbf8d161
+      internalID: 2597165469991393374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sawBlade_anim_6
+      name: sawBlade_2_anim_6
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 0
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9808927febebcf4ba04c34db84b7a2d
-      internalID: 1284741969832044801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sawBlade_anim_7
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 0
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c9ebe1d7bc0b2943a3d0efe4d420e2d
-      internalID: -6534373026305692654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sawBlade_anim_8
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 0
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cea33ebe3759d8f4d8460708a4f3739f
-      internalID: -4182959367210650247
+      spriteID: 7c4dfd4b5ddb37b44beb1dac4a639849
+      internalID: 6104404040626090342
       vertices: []
       indices: 
       edges: []
