@@ -13,6 +13,9 @@ public class WallScroll : MonoBehaviour
     private RawImage walls;
 
 
+    public float gravity;
+    public float gravityVel;
+
     public float terminalVelocity;
     public float minFallSpeed;
 
@@ -44,15 +47,17 @@ public class WallScroll : MonoBehaviour
 
         if(player.velocity.y < 0)
         {
-            speed = (-player.velocity.y + pixelsPerTick / tileSize) * Time.deltaTime;
+            speed = (-player.velocity.y + pixelsPerTick / tileSize + gravityVel) * Time.deltaTime;
         }
         else
         {
             speed = ( pixelsPerTick / tileSize) * Time.deltaTime;
         }
 
-        distance += speed / 16;
+        gravityVel += gravity;
 
+        distance += speed / 16;
+        
 
         scrollAmount += speed;
        /* if (player.velocity.y < 0f)

@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
     public bool touchingWallLeft;
 
     public float minjumpSpeed;
+    public float maxjumpSpeed;
+
+    public float minSwipe;
+    public float maxSwipe;
+
     public float friction;
 
     public float gravityWallSlideModifier;
@@ -20,6 +25,9 @@ public class Player : MonoBehaviour
     public float startTouchTime;
 
     public float swipeTimeCutOff;
+
+
+    private float prevYVelocity;
 
     enum playerState {SLIDING, JUMPING, BRAKING};
     //playerState state = playerStat.SLIDING;
@@ -37,7 +45,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0 && Input.touchSupported)
+        if(Input.touchCount > 0 && Input.touchSupported && false)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -123,11 +131,12 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && (touchingWallLeft || touchingWallRight))
             {
                 startTouchTime = Time.time;
+                startTouchPos = Input.mousePosition;
             }
 
             if (Input.GetMouseButton(0) && (touchingWallLeft || touchingWallRight))
             {
-                startTouchPos = Input.mousePosition;
+                
                 ws.pixelsPerTick -=  friction;
 
             }
@@ -135,39 +144,78 @@ public class Player : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0) && (touchingWallLeft || touchingWallRight))
             {
-
+                // only takes into consideration a horizontal swipe (possibly change) 
                 float deltaPosition = Input.mousePosition.x - startTouchPos.x;
 
-                Debug.Log(deltaPosition * jumpSpeed);
-                    if(deltaPosition > 0)
+                float swipeTime = Time.time - startTouchTime;
+                float swipeSpeed = deltaPosition / swipeTime;
+                
+                // check if the start of the swipe was performed recently
+                if(swipeTime < swipeTimeCutOff)
+                {
+                    Debug.Log("SWIPE TIME "+swipeTime+ "    deltaPosition" + deltaPosition);
+
+                    if (deltaPosition > 0)
                     {
                         if (touchingWallLeft)
                         {
                             //rb.velocity = new Vector2(rb.velocity.x, 0f);
-                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
+                            //limit the max speed
+                            if(swipeSpeed > maxSwipe)
+                            {
+                                swipeSpeed = maxjumpSpeed;
+                            }
+                            if(swipeSpeed < minSwipe)
+                            {
+                                swipeSpeed = minjumpSpeed;
+                            }
+
+                            float force = swipeSpeed * jumpSpeed;
+                            //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
+                            rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                            Debug.Log(swipeSpeed + "    "  + force);
                             touchingWallLeft = false;
                             touchingWallRight = false;
                             rb.gravityScale = 2.5f;
                         }
                     }
-                    else
+                    else if(deltaPosition < 0)
                     {
-                        if (touchingWallRight)
-                        {
-                            //rb.velocity = new Vector2(rb.velocity.x, 0f);
-                            rb.AddForce(Vector2.right * deltaPosition * Time.deltaTime * jumpSpeed - new Vector2(-rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
+                            if (touchingWallRight)
+                            {
+
+                                if (swipeSpeed < -maxSwipe)
+                                {
+                                    swipeSpeed = -maxjumpSpeed;
+                                }
+                                if (swipeSpeed > -minSwipe)
+                                {
+                                    swipeSpeed = -minjumpSpeed;
+                                }
+
+
+
+                            float force = swipeSpeed * jumpSpeed;
+                                Debug.Log(force);
+                                rb.AddForce(Vector2.right * force * Time.deltaTime,ForceMode2D.Impulse);
+                            Debug.Log(swipeSpeed + "    " + force);
                             touchingWallLeft = false;
-                            touchingWallRight = false;
-                            rb.gravityScale = 2.5f;
+                                touchingWallRight = false;
+                                rb.gravityScale = 2.5f;
                         }
                     }
                     
+                }
 
                 
             }
 
         }
+        prevYVelocity = rb.velocity.y;
     }
+
+
+
 
 
 
@@ -178,6 +226,8 @@ public class Player : MonoBehaviour
             touchingWallLeft = true;
             //ws.speed -= rb.velocity.y;
             rb.gravityScale = 0f;
+            ws.gravity = 0f;
+            ws.gravityVel = 0f;
             rb.velocity = new Vector2(0, ws.speed*16);
             
         }
@@ -186,6 +236,8 @@ public class Player : MonoBehaviour
             touchingWallRight = true;
             //ws.speed -= rb.velocity.y;
             rb.gravityScale = 0f;
+            ws.gravity =0f;
+            ws.gravityVel = 0f;
             rb.velocity = new Vector2(0, ws.speed*16);
             
         }
@@ -193,6 +245,8 @@ public class Player : MonoBehaviour
         if (collision.transform.CompareTag("ceil"))
         {
             rb.gravityScale = 0f;
+            ws.gravity = 0f;
+            ws.gravityVel = 0f;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             
         }
@@ -201,8 +255,10 @@ public class Player : MonoBehaviour
         {
             ws.pixelsPerTick += -rb.velocity.y;
             rb.gravityScale = 0f;
-            //ws.speed -= rb.velocity.y;
-            rb.velocity = new Vector2(rb.velocity.x, ws.speed);
+            ws.gravity = 2.5f;
+
+            
+            rb.velocity = new Vector2(rb.velocity.x, 0);
         }
     }
 }

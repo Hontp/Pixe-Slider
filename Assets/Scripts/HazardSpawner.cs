@@ -35,12 +35,12 @@ public class HazardSpawner : MonoBehaviour
         if(randomSpawnIndex == 0 )
         {
             Instantiate(HazardLeft, SpawnLocations[0].position, SpawnLocations[0].rotation);
-            Debug.Log("Spawning on the left " + randomSpawnIndex);
+            //Debug.Log("Spawning on the left " + randomSpawnIndex);
         }
         else if (randomSpawnIndex == 1)
         {
             Instantiate(HazardRight, SpawnLocations[1].position, SpawnLocations[1].rotation);
-            Debug.Log("Spawning on the right " + randomSpawnIndex);
+            //Debug.Log("Spawning on the right " + randomSpawnIndex);
         }
     }
 

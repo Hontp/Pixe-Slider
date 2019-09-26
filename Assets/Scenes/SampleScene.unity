@@ -6718,14 +6718,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeTolerance: 0
-  jumpSpeed: 50
+  jumpSpeed: 1.5
   touchingWallRight: 0
   touchingWallLeft: 1
-  minjumpSpeed: 40
+  minjumpSpeed: 100
+  maxjumpSpeed: 400
+  minSwipe: 100
+  maxSwipe: 400
   friction: 0.25
   gravityWallSlideModifier: 20
   startTouchTime: 0
-  swipeTimeCutOff: 0
+  swipeTimeCutOff: 0.3
   ws: {fileID: 711686579}
 --- !u!1 &2049595882
 GameObject:
