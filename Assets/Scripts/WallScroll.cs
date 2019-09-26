@@ -30,16 +30,29 @@ public class WallScroll : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        scrollAmount += (pixelsPerTick / tileSize) * Time.deltaTime;
+        BaseScroll();
+        PlayerOffset();
+        WallScroller();
+
+    }
+
+    void BaseScroll()
+    {
+        scrollAmount += (pixelsPerTick / tileSize) * Time.fixedDeltaTime;
+    }
+
+    void PlayerOffset()
+    {
+
         if (player.velocity.y < 0f)
         {
-            distance -= player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE*20);
+            distance -= player.velocity.y * Time.fixedDeltaTime * TILESIZE / (TILESIZE * 20);
         }
         else
         {
-            distance += (pixelsPerTick / tileSize) * Time.deltaTime;
+            distance += (pixelsPerTick / tileSize) * Time.fixedDeltaTime;
         }
 
 
@@ -53,10 +66,14 @@ public class WallScroll : MonoBehaviour
             pixelsPerTick = terminalVelocity;
         }
 
-
-        y += player.velocity.y * Time.deltaTime * TILESIZE / (TILESIZE * 20);
-        Rect uvRect = new Rect(0, -scrollAmount - y/2, 1, 1);
-        walls.uvRect = uvRect;
-
+        y += player.velocity.y * Time.fixedDeltaTime * TILESIZE / (TILESIZE * 20);
     }
+
+    void WallScroller()
+    {
+
+        Rect uvRect = new Rect(0, -scrollAmount - y / 2, 1, 1);
+        walls.uvRect = uvRect;
+    }
+
 }

@@ -18,8 +18,16 @@ public class HazardController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        scrollAmount = wScroll.pixelsPerTick;
-        transform.Translate(Vector2.up * (scrollAmount * Time.fixedDeltaTime), Space.World);
+        scrollAmount = ConvertUVOffsetToTranslate(wScroll.pixelsPerTick);
+        transform.Translate(Vector2.up * (scrollAmount), Space.World);
+    }
+
+    float ConvertUVOffsetToTranslate (float offset)
+    {
+        // alogorithm to convert float offset to transform offset
+        offset = offset / 40;
+
+        return offset;
     }
 }
 
