@@ -23,7 +23,14 @@ public class SawBlade : MonoBehaviour
 
         if (transform.position != currentPosition)
         {
-
+            transform.position = Vector3.Lerp(transform.position, wayPoint[1].transform.position, Timer);
+        }
+        else
+        {
+            if (currentPointIndex < wayPoint.Count -1)
+            {
+                currentPointIndex++;
+            }
         }
     }
 }
