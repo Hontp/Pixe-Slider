@@ -9,6 +9,7 @@ TagManager:
   - leftWall
   - rightWall
   - floor
+  - sawBlade
   layers:
   - Default
   - TransparentFX

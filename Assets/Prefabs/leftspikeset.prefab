@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4418269230812493635}
   - component: {fileID: 5033685642866838324}
+  - component: {fileID: 3829934735834174742}
   m_Layer: 0
   m_Name: Spikes_01_red
   m_TagString: Untagged
@@ -80,6 +81,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &3829934735834174742
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635747747389655713}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.13369846, y: 0.09313238}
+      - {x: -0.51489925, y: -0.33856893}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5447006, y: -0.34767032}
+      - {x: 0.18460083, y: 0.033531666}
 --- !u!1 &3288101045821784298
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5429139415707585389}
   - component: {fileID: 369352084244195485}
+  - component: {fileID: 2360923574488421400}
   m_Layer: 0
   m_Name: Wall_left_Ledge
   m_TagString: Untagged
@@ -160,6 +193,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2360923574488421400
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288101045821784298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.26696777, y: -0.4602661}
+      - {x: -0.09870815, y: -0.22528625}
+      - {x: 0.17656612, y: -0.06386709}
+      - {x: 0.49503326, y: 0.34436774}
+      - {x: 0.5, y: 0.5}
 --- !u!1 &6314885376774200027
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613343877781393146}
   - component: {fileID: 1758316524910306245}
+  - component: {fileID: 5868882506684629107}
   m_Layer: 0
   m_Name: Wall_left_ConnectingLedge
   m_TagString: Untagged
@@ -240,6 +306,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &5868882506684629107
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314885376774200027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
 --- !u!1 &8269964614783549322
 GameObject:
   m_ObjectHideFlags: 0
