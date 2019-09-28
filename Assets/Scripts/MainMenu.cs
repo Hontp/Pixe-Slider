@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
    
-    private float scrollSpeed = 5;
+    public float scrollSpeed;
     private Vector3 startPos;
 
     void Start()
@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     {
 
 
-        newPos = Mathf.Repeat(newPos, 5);
+        newPos = Mathf.Repeat(newPos, 10);
         newPos += Time.deltaTime * scrollSpeed;
 
         transform.position = startPos + Vector3.up*newPos;
