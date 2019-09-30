@@ -30,10 +30,15 @@ public class Player : MonoBehaviour
 
     public float ledgeBoost = 1f;
 
+    public float cliffGrabVelocityDampen = 0.75f;
+
     private float prevYVelocity;
 
-    enum playerState {SLIDING, JUMPING, BRAKING};
-    //playerState state = playerStat.SLIDING;
+    public Sprite[] playerPoses;
+
+    enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
+    public float climbingSpeed;
+    playerState state = playerState.SLIDING;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -46,6 +51,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        sr.flipX = !sr.flipX;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -147,7 +153,19 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButton(0) && (touchingWallLeft || touchingWallRight))
             {
                 
-                ws.pixelsPerTick -=  friction;
+                
+                if(rb.velocity.y > -0.2)
+                {
+                    Debug.Log("Climbing");
+                    rb.velocity = new Vector2(0, ws.speed*16 + climbingSpeed);
+                }
+                else
+                {
+                     Debug.Log("velocity y = " + rb.velocity.y);
+                    ws.speed *=  friction;
+                    rb.velocity = new Vector2(0,rb.velocity.y * friction );
+                    state = playerState.READYJUMP;
+                }
 
             }
 
@@ -159,16 +177,18 @@ public class Player : MonoBehaviour
 
                 float swipeTime = Time.time - startTouchTime;
                 float swipeSpeed = deltaPosition / swipeTime;
-                
+                 state = playerState.SLIDING;
                 // check if the start of the swipe was performed recently
                 if(swipeTime < swipeTimeCutOff)
                 {
+                    
                     Debug.Log("SWIPE TIME "+swipeTime+ "    deltaPosition" + deltaPosition);
 
                     if (deltaPosition > 0)
                     {
                         if (touchingWallLeft)
                         {
+                            state = playerState.JUMPING;
                             //rb.velocity = new Vector2(rb.velocity.x, 0f);
                             //limit the max speed
                             if(swipeSpeed > maxSwipe)
@@ -193,6 +213,7 @@ public class Player : MonoBehaviour
                     {
                             if (touchingWallRight)
                             {
+                                state = playerState.JUMPING;
 
                                 if (swipeSpeed < -maxSwipe)
                                 {
@@ -217,6 +238,7 @@ public class Player : MonoBehaviour
                     
                 }
 
+
                 
             }
 
@@ -232,6 +254,25 @@ public class Player : MonoBehaviour
             leftem.rateOverTime = touchingWallLeft && !dead ? 4 : 0;
             
 
+        #endregion
+
+        #region Player State
+        switch(state)
+        {
+            case playerState.SLIDING:
+                sr.sprite = playerPoses[0];
+                break;
+            case playerState.READYJUMP:
+                sr.sprite = playerPoses[1];
+                break;
+            case playerState.JUMPING:
+                sr.sprite = playerPoses[2];
+                break;
+            case playerState.DEATH:
+            //TODO: ADD DEATH STATE
+                sr.sprite = playerPoses[0];
+                break;
+        }
         #endregion
     }
 
@@ -251,6 +292,8 @@ public class Player : MonoBehaviour
             ws.gravityVel = 0f;
             ws.minFallSpeed = 0f;
             ws.pixelsPerTick = 0;
+
+            
         }
 
         
@@ -265,7 +308,11 @@ public class Player : MonoBehaviour
             rb.gravityScale = 0f;
             ws.gravity = 0f;
             ws.gravityVel = 0f;
-            rb.velocity = new Vector2(0, ws.speed*16);
+            
+            rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
+
+            state = playerState.SLIDING;
+            sr.flipX = !sr.flipX; 
             
         }
         if (collision.transform.CompareTag("rightWall"))
@@ -275,7 +322,12 @@ public class Player : MonoBehaviour
             rb.gravityScale = 0f;
             ws.gravity =0f;
             ws.gravityVel = 0f;
-            rb.velocity = new Vector2(0, ws.speed*16);
+
+            rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
+            
+
+            state = playerState.SLIDING;
+            sr.flipX = !sr.flipX;
             
         }
 

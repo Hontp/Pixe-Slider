@@ -342,7 +342,7 @@ MonoBehaviour:
   - {fileID: 343113064}
   - {fileID: 71864596}
   - {fileID: 71864596}
-  spawnTime: 1
+  spawnTime: 2
   HazardLeft: {fileID: 8269964614783549322, guid: 1c89547abfd88ae45b810e92305cbd4b,
     type: 3}
   HazardRight: {fileID: 8269964614783549322, guid: 67d030f34440a694ea1166413a9c0027,
@@ -11377,12 +11377,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 04a0c4566a98e74429fe848a5bce9ee1, type: 3}
+  m_Sprite: {fileID: -2950419081503125711, guid: 7105a33e26b2a41f8b46d4d9947598c3,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8125, y: 1.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11422,14 +11423,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.8125, y: 1.375}
+    newSize: {x: 0.8125, y: 1.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.53457046, y: 1.3781624}
   m_EdgeRadius: 0
 --- !u!50 &1895770734
 Rigidbody2D:
@@ -11469,15 +11470,21 @@ MonoBehaviour:
   touchingWallRight: 0
   touchingWallLeft: 1
   minjumpSpeed: 150
-  maxjumpSpeed: 400
+  maxjumpSpeed: 300
   minSwipe: 100
   maxSwipe: 400
-  friction: 0.25
+  friction: 0.75
   gravityWallSlideModifier: 20
   startTouchTime: 0
   swipeTimeCutOff: 0.3
   dead: 0
   ledgeBoost: 1
+  cliffGrabVelocityDampen: 0.75
+  playerPoses:
+  - {fileID: -2950419081503125711, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
+  - {fileID: 122516264070192928, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
+  - {fileID: -7161495871588848614, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
+  climbingSpeed: 5
   partLeftSlide: {fileID: 2146987009}
   partRightSlide: {fileID: 742759989}
   ws: {fileID: 711686579}
