@@ -243,6 +243,7 @@ public class Player : MonoBehaviour
 
         if(collider.transform.CompareTag("death"))
         {
+            rb.bodyType = RigidbodyType2D.Static;
             sr.enabled = false;
             dead = true;
             ws.gravity = 0;

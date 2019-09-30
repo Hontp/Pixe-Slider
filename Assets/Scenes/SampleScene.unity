@@ -953,7 +953,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -11468,7 +11468,7 @@ MonoBehaviour:
   jumpSpeed: 1.5
   touchingWallRight: 0
   touchingWallLeft: 1
-  minjumpSpeed: 100
+  minjumpSpeed: 150
   maxjumpSpeed: 400
   minSwipe: 100
   maxSwipe: 400
@@ -11585,7 +11585,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
