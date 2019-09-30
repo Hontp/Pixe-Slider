@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 
     public float swipeTimeCutOff;
 
+    public bool dead;
+
+    public float ledgeBoost = 1f;
 
     private float prevYVelocity;
 
@@ -33,18 +36,25 @@ public class Player : MonoBehaviour
     //playerState state = playerStat.SLIDING;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    public ParticleSystem partLeftSlide;
+    public ParticleSystem partRightSlide;
+
     public WallScroll ws;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(!dead){
+        #region gameplaycode
         if(Input.touchCount > 0 && Input.touchSupported && false)
         {
             Touch touch = Input.GetTouch(0);
@@ -212,12 +222,38 @@ public class Player : MonoBehaviour
 
         }
         prevYVelocity = rb.velocity.y;
+        #endregion
+        }
+        #region fx
+            // Smoke trails only on if the player is sliding on wall
+            var rightem = partRightSlide.emission;
+            var leftem = partLeftSlide.emission;
+            rightem.rateOverTime = touchingWallRight && !dead ? 4 : 0;
+            leftem.rateOverTime = touchingWallLeft && !dead ? 4 : 0;
+            
+
+        #endregion
     }
 
 
 
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
 
+        if(collider.transform.CompareTag("death"))
+        {
+            sr.enabled = false;
+            dead = true;
+            ws.gravity = 0;
+            ws.speed = 0;
+            ws.gravityVel = 0f;
+            ws.minFallSpeed = 0f;
+            ws.pixelsPerTick = 0;
+        }
+
+        
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
