@@ -171,10 +171,11 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && (touchingWallLeft || touchingWallRight))
             {
                 // only takes into consideration a horizontal swipe (possibly change) 
-                float deltaPosition = Input.mousePosition.x - startTouchPos.x;
+                float deltaPosition = Camera.main.ScreenToWorldPoint(Vector2.right * (Input.mousePosition.x - startTouchPos.x)).x;
 
                 float swipeTime = Time.time - startTouchTime;
-                float swipeSpeed = deltaPosition / swipeTime;
+                //float swipeSpeed = deltaPosition / swipeTime;
+                float swipeSpeed = deltaPosition/ swipeTime;
                  state = playerState.SLIDING;
                 // check if the start of the swipe was performed recently
                 if(swipeTime < swipeTimeCutOff)
@@ -331,7 +332,7 @@ public class Player : MonoBehaviour
 
         if (collision.transform.CompareTag("ceil"))
         {
-            rb.gravityScale = 0f;
+            
             ws.gravity = 0f;
             ws.gravityVel = 0f;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
@@ -340,7 +341,7 @@ public class Player : MonoBehaviour
 
         if(collision.transform.CompareTag("floor"))
         {
-            ws.pixelsPerTick += -rb.velocity.y;
+            ws.speed += -rb.velocity.y;
             rb.gravityScale = 0f;
             ws.gravity = 2.5f;
 
