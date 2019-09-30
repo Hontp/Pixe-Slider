@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
 
     public float swipeTimeCutOff;
 
-    public bool dead;
-
     public float ledgeBoost = 1f;
 
     public float cliffGrabVelocityDampen = 0.75f;
@@ -36,9 +34,9 @@ public class Player : MonoBehaviour
 
     public Sprite[] playerPoses;
 
-    enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
+    public enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
     public float climbingSpeed;
-    playerState state = playerState.SLIDING;
+    public playerState state = playerState.SLIDING;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -59,7 +57,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if(!dead){
+        if(state != playerState.DEATH){
         #region gameplaycode
         if(Input.touchCount > 0 && Input.touchSupported && false)
         {
@@ -250,8 +248,8 @@ public class Player : MonoBehaviour
             // Smoke trails only on if the player is sliding on wall
             var rightem = partRightSlide.emission;
             var leftem = partLeftSlide.emission;
-            rightem.rateOverTime = touchingWallRight && !dead ? 4 : 0;
-            leftem.rateOverTime = touchingWallLeft && !dead ? 4 : 0;
+            rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 4 : 0;
+            leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 4 : 0;
             
 
         #endregion
@@ -286,7 +284,7 @@ public class Player : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Static;
             sr.enabled = false;
-            dead = true;
+            state = playerState.DEATH;
             ws.gravity = 0;
             ws.speed = 0;
             ws.gravityVel = 0f;

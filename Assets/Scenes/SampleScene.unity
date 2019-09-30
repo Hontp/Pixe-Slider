@@ -1050,8 +1050,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 711686581}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -1113,7 +1113,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6577,6 +6577,7 @@ GameObject:
   - component: {fileID: 1880827910}
   - component: {fileID: 1880827912}
   - component: {fileID: 1880827911}
+  - component: {fileID: 1880827913}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -6734,8 +6735,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 711686581}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -6744,7 +6745,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6797,7 +6798,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.51
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6849,24 +6850,24 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0.5990566, b: 0.5990566, a: 1}
+        key1: {r: 1, g: 0.8940972, b: 0.5707547, a: 1}
+        key2: {r: 0.6551582, g: 1, b: 0.6084906, a: 0}
+        key3: {r: 0.7254902, g: 0.86489344, b: 1, a: 0}
+        key4: {r: 0.9832764, g: 0.759434, b: 1, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime0: 11180
+        ctime1: 22359
+        ctime2: 34888
+        ctime3: 49537
+        ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
@@ -6878,8 +6879,8 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
+        m_Mode: 1
+        m_NumColorKeys: 5
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -7600,32 +7601,32 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: -1
-          outSlope: -1
+          value: 0.29729462
+          inSlope: 0.7027054
+          outSlope: 0.7027054
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
-          outWeight: 0
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0
-          inSlope: -1
-          outSlope: -1
+          value: 1
+          inSlope: 0.7027054
+          outSlope: 0.7027054
           tangentMode: 34
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.33333334
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -7932,33 +7933,33 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5647059}
-        key1: {r: 0, g: 0, b: 0, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 0.7921569}
+        key2: {r: 1, g: 1, b: 1, a: 0.5176471}
+        key3: {r: 0.9832764, g: 0.759434, b: 1, a: 0}
+        key4: {r: 0.9832764, g: 0.759434, b: 1, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime1: 42212
+        ctime2: 65535
+        ctime3: 65535
+        ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
+        atime0: 15806
+        atime1: 31804
+        atime2: 49537
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_Mode: 1
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -8109,7 +8110,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 04a0c4566a98e74429fe848a5bce9ee1, type: 3}
+    - sprite: {fileID: -7161495871588848614, guid: 7105a33e26b2a41f8b46d4d9947598c3,
+        type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -11319,6 +11321,22 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1880827913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880827909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a6dda38b9853c428387db3e4f1b838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ws: {fileID: 711686579}
+  player: {fileID: 1895770734}
+  p: {fileID: 1895770735}
+  TILESIZE: 16
 --- !u!1 &1895770730
 GameObject:
   m_ObjectHideFlags: 0
@@ -11477,7 +11495,6 @@ MonoBehaviour:
   gravityWallSlideModifier: 20
   startTouchTime: 0
   swipeTimeCutOff: 0.3
-  dead: 0
   ledgeBoost: 1
   cliffGrabVelocityDampen: 0.75
   playerPoses:
@@ -11485,6 +11502,7 @@ MonoBehaviour:
   - {fileID: 122516264070192928, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: -7161495871588848614, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   climbingSpeed: 5
+  state: 0
   partLeftSlide: {fileID: 2146987009}
   partRightSlide: {fileID: 742759989}
   ws: {fileID: 711686579}
@@ -11689,8 +11707,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 711686581}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -11752,7 +11770,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
