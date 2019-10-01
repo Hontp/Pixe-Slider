@@ -6,24 +6,28 @@ public class SawBlade : MonoBehaviour
 {
     public List<Transform> wayPoint = null;
     public float Speed;
-    public Vector3 currentPosition;
+    public float wallSpeed;
+    public Vector3 endPos;
 
-    int currentPointIndex;
+    public int currentPointIndex;
     float Timer;
 
     private void Start()
     {
+        currentPointIndex = 1;
         Timer = 0;
-        currentPosition = wayPoint[currentPointIndex].position;
     }
 
     private void Update()
     {
+
         Timer += Time.deltaTime * Speed;
 
-        if (transform.position != currentPosition)
+
+
+        if (transform.position != endPos)
         {
-            transform.position = Vector3.Lerp(transform.position, wayPoint[1].position, Timer);
+            transform.position = transform.position + Vector3.up * Timer;
         }
         else
         {
