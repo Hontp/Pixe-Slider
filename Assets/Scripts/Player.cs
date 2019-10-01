@@ -32,8 +32,13 @@ public class Player : MonoBehaviour
 
     private float prevYVelocity;
 
+    public float camOffset;
+
     public Sprite[] playerPoses;
 
+    public float cameraLerpTime;
+
+    public float playerGravity;
     public enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
     public float climbingSpeed;
     public playerState state = playerState.SLIDING;
@@ -154,12 +159,12 @@ public class Player : MonoBehaviour
                 
                 if(rb.velocity.y > -0.2)
                 {
-                    Debug.Log("Climbing");
-                    rb.velocity = new Vector2(0, ws.speed*16 + climbingSpeed);
+                   // Debug.Log("Climbing");
+                    //rb.velocity = new Vector2(0, ws.speed*16 + climbingSpeed);
                 }
                 else
                 {
-                     Debug.Log("velocity y = " + rb.velocity.y);
+                   //  Debug.Log("velocity y = " + rb.velocity.y);
                     ws.speed *=  friction;
                     rb.velocity = new Vector2(0,rb.velocity.y * friction );
                     state = playerState.READYJUMP;
@@ -205,7 +210,8 @@ public class Player : MonoBehaviour
                             Debug.Log(swipeSpeed + "    "  + force);
                             touchingWallLeft = false;
                             touchingWallRight = false;
-                            rb.gravityScale = 2.5f;
+                            //rb.gravityScale = 2.5f;
+                            ws.gravity = playerGravity;
                         }
                     }
                     else if(deltaPosition < 0)
@@ -231,8 +237,9 @@ public class Player : MonoBehaviour
                             Debug.Log(swipeSpeed + "    " + force);
                             touchingWallLeft = false;
                                 touchingWallRight = false;
-                                rb.gravityScale = 2.5f;
-                        }
+                                //rb.gravityScale = 2.5f;
+                                ws.gravity = playerGravity;
+                            }
                     }
                     
                 }
@@ -274,13 +281,13 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    
     private void LateUpdate()
     {
-        //ws.playerSpeed = rb.velocity.y;
-        float playerVPos = -15f ;
-        transform.position = new Vector2(transform.position.x , playerVPos);
+        //transform.position = new Vector2(transform.position.x,)
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x,Mathf.Lerp(Camera.main.transform.position.y, transform.position.y+(ws.speed), Time.deltaTime * cameraLerpTime),Camera.main.transform.position.z);
     }
+
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -310,11 +317,12 @@ public class Player : MonoBehaviour
         {
             touchingWallLeft = true;
             //ws.speed -= rb.velocity.y;
-            rb.gravityScale = 0f;
+
             ws.gravity = 0f;
             ws.gravityVel = 0f;
             
-            rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
+            // TODO:
+           // rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
 
             state = playerState.SLIDING;
             sr.flipX = !sr.flipX; 
@@ -324,11 +332,12 @@ public class Player : MonoBehaviour
         {
             touchingWallRight = true;
             //ws.speed -= rb.velocity.y;
-            rb.gravityScale = 0f;
-            ws.gravity =0f;
+            //rb.gravityScale = 0f;
+            ws.gravity = 0f;
             ws.gravityVel = 0f;
 
-            rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
+            // TODO:
+            //rb.velocity = new Vector2(0, rb.velocity.y* cliffGrabVelocityDampen);
             
 
             state = playerState.SLIDING;
@@ -347,9 +356,9 @@ public class Player : MonoBehaviour
 
         if(collision.transform.CompareTag("floor"))
         {
-            ws.speed += -rb.velocity.y;
+           
             rb.gravityScale = 0f;
-            ws.gravity = 2.5f;
+            //ws.gravity = 2.5f;
 
             
             rb.velocity = new Vector2(rb.velocity.x, 0);
