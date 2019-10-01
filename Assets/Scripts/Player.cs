@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
     private Vector2 startTouchPos;
 
-    public float swipeTolerance;
+    public float swipeMultiplier;
+
     public float jumpSpeed;
 
     public bool touchingWallRight;
@@ -57,105 +58,177 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         sr.flipX = !sr.flipX;
         rb = GetComponent<Rigidbody2D>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(state != playerState.DEATH){
-        #region gameplaycode
-        if(Input.touchCount > 0 && Input.touchSupported && false)
+        if (state != playerState.DEATH)
         {
-            Touch touch = Input.GetTouch(0);
-
-            if(touch.phase == TouchPhase.Began)
+            #region gameplaycode
+            if (Input.touchCount > 0 && Input.touchSupported && false)
             {
-                
-            }
+                Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Stationary)
-            {
-                
-            }
+                if (touch.phase == TouchPhase.Began)
+                {
+                    startTouchTime = Time.time;
+                    startTouchPos = touch.position;
+                }
 
-            if (touch.phase == TouchPhase.Moved)
-            {
-              
-            }
-
-            if (touch.phase == TouchPhase.Ended)
-            {
-
-            }
-        }
-        else
-        {
-
-            if (Input.GetMouseButtonDown(0) && (touchingWallLeft || touchingWallRight))
-            {
-                startTouchTime = Time.time;
-                startTouchPos = Input.mousePosition;
-            }
-
-            if (Input.GetMouseButton(0) && (touchingWallLeft || touchingWallRight))
-            {
-                
-                
-
-                   //  Debug.Log("velocity y = " + rb.velocity.y);
+                if (touch.phase == TouchPhase.Stationary)
+                {
+                    //  Debug.Log("velocity y = " + rb.velocity.y);
                     ws.gravityVel = ws.gravityVel * friction;
 
                     //rb.velocity = new Vector2(0,rb.velocity.y * friction );
                     state = playerState.READYJUMP;
+                }
 
-
-            }
-
-
-            if (Input.GetMouseButtonUp(0) && (touchingWallLeft || touchingWallRight))
-            {
-                // only takes into consideration a horizontal swipe (possibly change) 
-                float deltaPosition = Camera.main.ScreenToWorldPoint(Vector2.right * (Input.mousePosition.x - startTouchPos.x)).x;
-
-                float swipeTime = Time.time - startTouchTime;
-                //float swipeSpeed = deltaPosition / swipeTime;
-                float swipeSpeed = deltaPosition/ swipeTime;
-                 state = playerState.SLIDING;
-                // check if the start of the swipe was performed recently
-                if(swipeTime < swipeTimeCutOff)
+                if (touch.phase == TouchPhase.Moved)
                 {
-                    
-                    Debug.Log("SWIPE TIME "+swipeTime+ "    deltaPosition" + deltaPosition);
 
-                    if (deltaPosition > 0)
+                }
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    // only takes into consideration a horizontal swipe (possibly change) 
+                    float deltaPosition = Camera.main.ScreenToWorldPoint(Vector2.right * (touch.position.x - startTouchPos.x)).x;
+
+                    float swipeTime = Time.time - startTouchTime;
+                    //float swipeSpeed = deltaPosition / swipeTime;
+                    float swipeSpeed = swipeMultiplier * deltaPosition / swipeTime;
+                    state = playerState.SLIDING;
+                    // check if the start of the swipe was performed recently
+                    if (swipeTime < swipeTimeCutOff)
                     {
-                        if (touchingWallLeft)
+
+                        Debug.Log("SWIPE TIME " + swipeTime + "    deltaPosition" + deltaPosition);
+
+                        if (deltaPosition > 0)
                         {
-                            state = playerState.JUMPING;
-                            //rb.velocity = new Vector2(rb.velocity.x, 0f);
-                            //limit the max speed
-                            if(swipeSpeed > maxSwipe)
+                            if (touchingWallLeft)
                             {
-                                swipeSpeed = maxjumpSpeed;
-                            }
-                            if(swipeSpeed < minSwipe)
-                            {
-                                swipeSpeed = minjumpSpeed;
-                            }
+                                state = playerState.JUMPING;
+                                //rb.velocity = new Vector2(rb.velocity.x, 0f);
+                                //limit the max speed
+                                if (swipeSpeed > maxjumpSpeed)
+                                {
+                                    swipeSpeed = maxjumpSpeed;
+                                }
+                                if (swipeSpeed < minjumpSpeed)
+                                {
+                                    swipeSpeed = minjumpSpeed;
+                                }
 
-                            float force = swipeSpeed * jumpSpeed;
-                            //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
-                            rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
-                            Debug.Log(swipeSpeed + "    "  + force);
-                            touchingWallLeft = false;
-                            touchingWallRight = false;
-                            //rb.gravityScale = 2.5f;
-                            ws.gravity = playerGravity;
+                                float force = swipeSpeed * jumpSpeed;
+                                //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                Debug.Log(swipeSpeed + "    " + force);
+                                touchingWallLeft = false;
+                                touchingWallRight = false;
+                                //rb.gravityScale = 2.5f;
+                                ws.gravity = playerGravity;
+                            }
                         }
+                        else if (deltaPosition < 0)
+                        {
+                            if (touchingWallRight)
+                            {
+                                state = playerState.JUMPING;
+
+                                if (swipeSpeed < -maxjumpSpeed)
+                                {
+                                    swipeSpeed = -maxjumpSpeed;
+                                }
+                                if (swipeSpeed > -minjumpSpeed)
+                                {
+                                    swipeSpeed = -minjumpSpeed;
+                                }
+
+
+
+                                float force = swipeSpeed * jumpSpeed;
+                                Debug.Log(force);
+                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                Debug.Log(swipeSpeed + "    " + force);
+                                touchingWallLeft = false;
+                                touchingWallRight = false;
+                                //rb.gravityScale = 2.5f;
+                                ws.gravity = playerGravity;
+                            }
+                        }
+
                     }
-                    else if(deltaPosition < 0)
+
+                }
+            }
+            else
+            {
+
+                if (Input.GetMouseButtonDown(0) && (touchingWallLeft || touchingWallRight))
+                {
+                    startTouchTime = Time.time;
+                    startTouchPos = Input.mousePosition;
+                }
+
+                if (Input.GetMouseButton(0) && (touchingWallLeft || touchingWallRight))
+                {
+
+                    //  Debug.Log("velocity y = " + rb.velocity.y);
+                    ws.gravityVel = ws.gravityVel * friction;
+
+                    //rb.velocity = new Vector2(0,rb.velocity.y * friction );
+                    state = playerState.READYJUMP;
+                }
+
+
+                if (Input.GetMouseButtonUp(0) && (touchingWallLeft || touchingWallRight))
+                {
+                    // only takes into consideration a horizontal swipe (possibly change) 
+                    float deltaPosition = Camera.main.ScreenToWorldPoint(Vector2.right * (Input.mousePosition.x - startTouchPos.x)).x;
+
+                    float swipeTime = Time.time - startTouchTime;
+                    //float swipeSpeed = deltaPosition / swipeTime;
+                    float swipeSpeed = deltaPosition / swipeTime;
+                    state = playerState.SLIDING;
+                    // check if the start of the swipe was performed recently
+                    if (swipeTime < swipeTimeCutOff)
                     {
+
+                        Debug.Log("SWIPE TIME " + swipeTime + "    deltaPosition" + deltaPosition);
+
+                        if (deltaPosition > 0)
+                        {
+                            if (touchingWallLeft)
+                            {
+                                state = playerState.JUMPING;
+                                //rb.velocity = new Vector2(rb.velocity.x, 0f);
+                                //limit the max speed
+                                if (swipeSpeed > maxSwipe)
+                                {
+                                    swipeSpeed = maxjumpSpeed;
+                                }
+                                if (swipeSpeed < minSwipe)
+                                {
+                                    swipeSpeed = minjumpSpeed;
+                                }
+
+                                float force = swipeSpeed * jumpSpeed;
+                                //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                Debug.Log(swipeSpeed + "    " + force);
+                                touchingWallLeft = false;
+                                touchingWallRight = false;
+                                //rb.gravityScale = 2.5f;
+                                ws.gravity = playerGravity;
+                            }
+                        }
+                        else if (deltaPosition < 0)
+                        {
                             if (touchingWallRight)
                             {
                                 state = playerState.JUMPING;
@@ -171,39 +244,41 @@ public class Player : MonoBehaviour
 
 
 
-                            float force = swipeSpeed * jumpSpeed;
+                                float force = swipeSpeed * jumpSpeed;
                                 Debug.Log(force);
-                                rb.AddForce(Vector2.right * force * Time.deltaTime,ForceMode2D.Impulse);
-                            Debug.Log(swipeSpeed + "    " + force);
-                            touchingWallLeft = false;
+                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                Debug.Log(swipeSpeed + "    " + force);
+                                touchingWallLeft = false;
                                 touchingWallRight = false;
                                 //rb.gravityScale = 2.5f;
                                 ws.gravity = playerGravity;
                             }
+                        }
+
                     }
-                    
+
+
+
                 }
 
-
-                
             }
-
-        }
-        prevYVelocity = rb.velocity.y;
-        #endregion
+                prevYVelocity = rb.velocity.y;
+                #endregion
+            
+           
         }
         #region fx
-            // Smoke trails only on if the player is sliding on wall
-            var rightem = partRightSlide.emission;
-            var leftem = partLeftSlide.emission;
-            rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 4 : 0;
-            leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 4 : 0;
-            
+        // Smoke trails only on if the player is sliding on wall
+        var rightem = partRightSlide.emission;
+        var leftem = partLeftSlide.emission;
+        rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 4 : 0;
+        leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 4 : 0;
+
 
         #endregion
 
         #region Player State
-        switch(state)
+        switch (state)
         {
             case playerState.SLIDING:
                 sr.sprite = playerPoses[0];
@@ -220,6 +295,9 @@ public class Player : MonoBehaviour
         }
         #endregion
     }
+
+
+
 
     private void LateUpdate()
     {
@@ -238,6 +316,7 @@ public class Player : MonoBehaviour
            // sr.enabled = false;
 
             state = playerState.DEATH;
+            sr.sprite = playerPoses[3];
             ws.gravity = 0;
             ws.speed = 0;
             ws.gravityVel = 0f;

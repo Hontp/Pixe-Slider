@@ -11661,14 +11661,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4b51c089328314caa6b7c7504d6fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeTolerance: 0
-  jumpSpeed: 75
+  swipeMultiplier: 0.2
+  jumpSpeed: 8
   touchingWallRight: 0
   touchingWallLeft: 1
-  minjumpSpeed: 5
-  maxjumpSpeed: 8
-  minSwipe: 0.5
-  maxSwipe: 5
+  minjumpSpeed: 5.5
+  maxjumpSpeed: 6
+  minSwipe: 100
+  maxSwipe: 400
   friction: 0.96
   gravityWallSlideModifier: 20
   startTouchTime: 0

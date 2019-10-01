@@ -28,7 +28,7 @@ public class Trail : MonoBehaviour
 
             var emission = ps.emission;
            
-            emission.rateOverDistance = Mathf.Abs(player.velocity.x)/4;
+            emission.rateOverDistance = Mathf.Abs(player.velocity.x)/2;
             var renderer = GetComponent<ParticleSystemRenderer>();
             
             renderer.flip = player.velocity.x < 0 ? new Vector3(1f,0f,0f) : new Vector3(0f,0f,0f);
