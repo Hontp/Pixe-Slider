@@ -268,15 +268,19 @@ public class Player : MonoBehaviour
                 sr.sprite = playerPoses[2];
                 break;
             case playerState.DEATH:
-            //TODO: ADD DEATH STATE
-                sr.sprite = playerPoses[0];
+                sr.sprite = playerPoses[3];
                 break;
         }
         #endregion
     }
 
-
-
+    
+    private void LateUpdate()
+    {
+        //ws.playerSpeed = rb.velocity.y;
+        float playerVPos = -15f ;
+        transform.position = new Vector2(transform.position.x , playerVPos);
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -284,13 +288,15 @@ public class Player : MonoBehaviour
         if(collider.transform.CompareTag("death"))
         {
             rb.bodyType = RigidbodyType2D.Static;
-            sr.enabled = false;
+           // sr.enabled = false;
+
             state = playerState.DEATH;
             ws.gravity = 0;
             ws.speed = 0;
             ws.gravityVel = 0f;
             ws.minFallSpeed = 0f;
             ws.pixelsPerTick = 0;
+            transform.position = collider.transform.position;
 
             
         }

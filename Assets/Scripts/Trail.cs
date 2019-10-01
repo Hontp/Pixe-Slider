@@ -24,7 +24,7 @@ public class Trail : MonoBehaviour
         if(p.state == Player.playerState.JUMPING)
         {
             var main = ps.main;
-            main.startSpeed = 0;
+            main.startSpeed = ws.speed * (320f/16f);
 
             var emission = ps.emission;
            
