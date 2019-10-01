@@ -31,6 +31,7 @@ public class WallScroll : MonoBehaviour
     public Vector3 oldPos, deltaPos;
 
     public float playerSpeed;
+    float deltaScroll;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,11 @@ public class WallScroll : MonoBehaviour
             speed = ( pixelsPerTick / tileSize) * Time.deltaTime;
         }
 
+
+
         gravityVel += gravity;
+
+
 
         distance += speed / 16;
         

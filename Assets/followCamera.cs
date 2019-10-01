@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scrollspace : MonoBehaviour
+public class followCamera : MonoBehaviour
 {
-    public WallScroll ws;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +13,6 @@ public class Scrollspace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(ws.speed * Vector2.up);
+        transform.position = Camera.main.transform.position;
     }
 }

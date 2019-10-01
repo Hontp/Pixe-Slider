@@ -422,7 +422,7 @@ MonoBehaviour:
   - {fileID: 343113064}
   - {fileID: 71864596}
   - {fileID: 71864596}
-  spawnTime: 2
+  spawnTime: 1
   HazardLeft: {fileID: 8269964614783549322, guid: 1c89547abfd88ae45b810e92305cbd4b,
     type: 3}
   HazardRight: {fileID: 8269964614783549322, guid: 67d030f34440a694ea1166413a9c0027,
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
   y: 0
   gravity: 0
   gravityVel: 0
-  terminalVelocity: 240
+  terminalVelocity: 80
   minFallSpeed: 48
   previousYVelocity: 0
   player: {fileID: 1895770734}
@@ -5843,7 +5843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855269594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.739, y: 11.101, z: 0}
+  m_LocalPosition: {x: -0.0390002, y: 8.511, z: 0}
   m_LocalScale: {x: 10.476395, y: 2.93858, z: 1}
   m_Children: []
   m_Father: {fileID: 1773213398}
@@ -5951,7 +5951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967007280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.54, y: 2.614, z: 0}
+  m_LocalPosition: {x: 5.24, y: 0.024, z: 0}
   m_LocalScale: {x: 2.0219338, y: 20.046871, z: 1}
   m_Children: []
   m_Father: {fileID: 1773213398}
@@ -6079,7 +6079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009949515}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.345, y: -6.89, z: 0}
+  m_LocalPosition: {x: 0.3549998, y: -9.48, z: 0}
   m_LocalScale: {x: 11.395131, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1773213398}
@@ -6432,7 +6432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710776609}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.936, y: 2.404, z: 0}
+  m_LocalPosition: {x: -5.236, y: -0.186, z: 0}
   m_LocalScale: {x: 2.0314841, y: 19.687824, z: 1}
   m_Children: []
   m_Father: {fileID: 1773213398}
@@ -6626,6 +6626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773213398}
+  - component: {fileID: 1773213399}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -6641,7 +6642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773213397}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -2.59, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1710776610}
@@ -6649,8 +6650,20 @@ Transform:
   - {fileID: 855269595}
   - {fileID: 1009949516}
   m_Father: {fileID: 2049595883}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1773213399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773213397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0343ca8d366a0e243b7aeac18561589e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1812499089
 GameObject:
   m_ObjectHideFlags: 0
@@ -11587,7 +11600,7 @@ Transform:
   - {fileID: 2146987007}
   - {fileID: 742759987}
   m_Father: {fileID: 2049595883}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1895770733
 BoxCollider2D:
@@ -11656,17 +11669,20 @@ MonoBehaviour:
   maxjumpSpeed: 8
   minSwipe: 0.5
   maxSwipe: 5
-  friction: 0.8
+  friction: 0.96
   gravityWallSlideModifier: 20
   startTouchTime: 0
   swipeTimeCutOff: 0.3
   ledgeBoost: 1
-  cliffGrabVelocityDampen: 0.75
+  cliffGrabVelocityDampen: 0.5
+  camOffset: -4
   playerPoses:
   - {fileID: -2950419081503125711, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: 122516264070192928, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: -7161495871588848614, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: 2296629303821752319, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
+  cameraLerpTime: 2
+  playerGravity: 0.45
   climbingSpeed: 5
   state: 0
   partLeftSlide: {fileID: 2146987009}
@@ -11794,8 +11810,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
-  - {fileID: 1773213398}
   - {fileID: 1895770732}
+  - {fileID: 1773213398}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
