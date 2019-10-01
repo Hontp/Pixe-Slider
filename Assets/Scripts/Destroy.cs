@@ -23,7 +23,10 @@ public class Destroy : MonoBehaviour
 
     void DestroyObjectDelayed()
     {
-        Destroy(gameObject, WaitToDestroy);
+        if(transform.position.y > 0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

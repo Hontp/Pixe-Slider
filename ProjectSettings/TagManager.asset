@@ -9,7 +9,8 @@ TagManager:
   - leftWall
   - rightWall
   - floor
-  - sawBlade
+  - death
+  - ledge
   layers:
   - Default
   - TransparentFX

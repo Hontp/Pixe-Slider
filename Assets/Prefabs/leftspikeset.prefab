@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4418269230812493635}
   - component: {fileID: 5033685642866838324}
-  - component: {fileID: 3829934735834174742}
+  - component: {fileID: 4881805228111413314}
   m_Layer: 0
   m_Name: Spikes_01_red
-  m_TagString: Untagged
+  m_TagString: death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2f236f36e36ec344a93c5c2123985573, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8301887, g: 0.69968253, b: 0.5521538, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3829934735834174742
-PolygonCollider2D:
+--- !u!61 &4881805228111413314
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,10 +91,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0005784035, y: -0.43730283}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -104,14 +104,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.13369846, y: 0.09313238}
-      - {x: -0.51489925, y: -0.33856893}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5447006, y: -0.34767032}
-      - {x: 0.18460083, y: 0.033531666}
+  serializedVersion: 2
+  m_Size: {x: 0.87998295, y: 0.12539434}
+  m_EdgeRadius: 0
 --- !u!1 &3288101045821784298
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,10 +117,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5429139415707585389}
   - component: {fileID: 369352084244195485}
-  - component: {fileID: 2360923574488421400}
+  - component: {fileID: 1456701620948728669}
   m_Layer: 0
   m_Name: Wall_left_Ledge
-  m_TagString: Untagged
+  m_TagString: ledge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +178,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e7cb653ec0f3dfd41939e1ea4d8b1928, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33962262, g: 0.2494115, b: 0.14898539, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -193,7 +188,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2360923574488421400
+--- !u!60 &1456701620948728669
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +198,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -220,10 +215,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.5, y: 0.5}
       - {x: -0.5, y: -0.5}
-      - {x: -0.26696777, y: -0.4602661}
-      - {x: -0.09870815, y: -0.22528625}
-      - {x: 0.17656612, y: -0.06386709}
-      - {x: 0.49503326, y: 0.34436774}
+      - {x: -0.3248434, y: -0.32924867}
       - {x: 0.5, y: 0.5}
 --- !u!1 &6314885376774200027
 GameObject:
@@ -235,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613343877781393146}
   - component: {fileID: 1758316524910306245}
-  - component: {fileID: 5868882506684629107}
+  - component: {fileID: 6294656245052283717}
   m_Layer: 0
   m_Name: Wall_left_ConnectingLedge
   m_TagString: Untagged
@@ -296,7 +288,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 65bb962a73a0ec54fbf62975e431608c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33962262, g: 0.2494115, b: 0.14898539, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -306,8 +298,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5868882506684629107
-PolygonCollider2D:
+--- !u!61 &6294656245052283717
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -329,12 +321,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &8269964614783549322
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6458675700558362492}
   - component: {fileID: -2176707541849491413}
-  - component: {fileID: -7962131092570017812}
+  - component: {fileID: -5107952066842787545}
   m_Layer: 0
   m_Name: leftspikeset
   m_TagString: Untagged
@@ -382,8 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9556abda5dc2c04e81410354397ea7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitToDestroy: 3
---- !u!114 &-7962131092570017812
+  WaitToDestroy: 10
+--- !u!114 &-5107952066842787545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -396,3 +385,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollAmount: 0
+  extraVal: 0
