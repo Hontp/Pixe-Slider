@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1445291897944733079}
   - component: {fileID: 1445291897944733078}
   - component: {fileID: 9019070643107533449}
-  - component: {fileID: 8571161899231092810}
+  - component: {fileID: -3590248761163797762}
   m_Layer: 0
-  m_Name: SawBlade
+  m_Name: SawBladeHorizontal
   m_TagString: death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ PolygonCollider2D:
       - {x: 0.24016428, y: -0.06884956}
       - {x: 0.2358222, y: 0.054376602}
       - {x: 0.05582285, y: 0.23582268}
---- !u!114 &8571161899231092810
+--- !u!114 &-3590248761163797762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445291897944733077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf73dd4580157b145a4afd71cc47b285, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a2ed8acdc4e2174cb194aa8f7d04e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.25
+  Speed: 0.125
   wallSpeed: 0
-  endPos: {x: 0, y: 0, z: 0}
-  currentPointIndex: 0
+  myScroll: {fileID: 0}
+  maxDistance: 7
+  currentDistance: 0

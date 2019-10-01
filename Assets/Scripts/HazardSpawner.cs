@@ -34,12 +34,16 @@ public class HazardSpawner : MonoBehaviour
 
         if(randomSpawnIndex == 0 )
         {
-            Instantiate(HazardLeft, SpawnLocations[0].position, SpawnLocations[0].rotation);
+         GameObject g = Instantiate(HazardLeft, SpawnLocations[0].position, SpawnLocations[0].rotation)as GameObject;
+            g.transform.GetChild(0).GetComponent<SpriteRenderer>().color = PalletteController.currentColor;
+            g.transform.GetChild(1).GetComponent<SpriteRenderer>().color = PalletteController.currentColor;
             //Debug.Log("Spawning on the left " + randomSpawnIndex);
         }
         else if (randomSpawnIndex == 1)
         {
-            Instantiate(HazardRight, SpawnLocations[1].position, SpawnLocations[1].rotation);
+           GameObject g = Instantiate(HazardRight, SpawnLocations[1].position, SpawnLocations[1].rotation) as GameObject;
+            g.transform.GetChild(0).GetComponent<SpriteRenderer>().color = PalletteController.currentColor;
+            g.transform.GetChild(1).GetComponent<SpriteRenderer>().color = PalletteController.currentColor;
             //Debug.Log("Spawning on the right " + randomSpawnIndex);
         }
     }

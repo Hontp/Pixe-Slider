@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     public ParticleSystem partRightSlide;
 
     public WallScroll ws;
+    public GameObject blood;
 
     // Start is called before the first frame update
     void Start()
@@ -317,13 +318,15 @@ public class Player : MonoBehaviour
 
             state = playerState.DEATH;
             sr.sprite = playerPoses[3];
+
             ws.gravity = 0;
             ws.speed = 0;
             ws.gravityVel = 0f;
             ws.minFallSpeed = 0f;
             ws.pixelsPerTick = 0;
             transform.position = collider.transform.position;
-
+            Instantiate(blood, transform);
+            
             Invoke("restart", 1.5f);
         }
 
