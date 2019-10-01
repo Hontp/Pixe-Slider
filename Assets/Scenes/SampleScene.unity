@@ -11825,6 +11825,7 @@ MonoBehaviour:
   partLeftSlide: {fileID: 2146987009}
   partRightSlide: {fileID: 742759989}
   ws: {fileID: 711686579}
+  blood: {fileID: 6121671308286885370, guid: 4f0cee5c78d773346a017bbccf97dbfd, type: 3}
 --- !u!1 &2023256570
 GameObject:
   m_ObjectHideFlags: 0
