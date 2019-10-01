@@ -57,7 +57,11 @@ public class WallScroll : MonoBehaviour
             speed = ( pixelsPerTick / tileSize) * Time.deltaTime;
         }
 
+
+
         gravityVel += gravity;
+
+
 
         distance += speed / 16;
         

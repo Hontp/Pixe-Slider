@@ -422,7 +422,7 @@ MonoBehaviour:
   - {fileID: 343113064}
   - {fileID: 71864596}
   - {fileID: 71864596}
-  spawnTime: 2
+  spawnTime: 1
   HazardLeft: {fileID: 8269964614783549322, guid: 1c89547abfd88ae45b810e92305cbd4b,
     type: 3}
   HazardRight: {fileID: 8269964614783549322, guid: 67d030f34440a694ea1166413a9c0027,
@@ -891,7 +891,7 @@ MonoBehaviour:
   y: 0
   gravity: 0
   gravityVel: 0
-  terminalVelocity: 100
+  terminalVelocity: 80
   minFallSpeed: 48
   previousYVelocity: 0
   player: {fileID: 1895770734}
@@ -11669,20 +11669,20 @@ MonoBehaviour:
   maxjumpSpeed: 8
   minSwipe: 0.5
   maxSwipe: 5
-  friction: 0.8
+  friction: 0.96
   gravityWallSlideModifier: 20
   startTouchTime: 0
   swipeTimeCutOff: 0.3
   ledgeBoost: 1
-  cliffGrabVelocityDampen: 0.75
-  camOffset: 0
+  cliffGrabVelocityDampen: 0.5
+  camOffset: -4
   playerPoses:
   - {fileID: -2950419081503125711, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: 122516264070192928, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: -7161495871588848614, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   - {fileID: 2296629303821752319, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}
   cameraLerpTime: 2
-  playerGravity: 0.5
+  playerGravity: 0.45
   climbingSpeed: 5
   state: 0
   partLeftSlide: {fileID: 2146987009}

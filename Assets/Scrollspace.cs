@@ -14,6 +14,6 @@ public class Scrollspace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(ws.speed * 16f/320f * Vector2.down);
+        transform.Translate(ws.speed * Vector2.up);
     }
 }
