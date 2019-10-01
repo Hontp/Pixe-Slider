@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
             transform.position = collider.transform.position;
             Instantiate(blood, transform);
             
-            //Invoke("restart", 1.5f);
+            Invoke("restart", 1.5f);
         }
 
         
