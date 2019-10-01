@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SawBlade : MonoBehaviour
 {
-    public List<GameObject> wayPoint = null;
+    public List<Transform> wayPoint = null;
     public float Speed;
     public Vector3 currentPosition;
 
@@ -14,7 +14,7 @@ public class SawBlade : MonoBehaviour
     private void Start()
     {
         Timer = 0;
-        currentPosition = wayPoint[currentPointIndex].transform.position;
+        currentPosition = wayPoint[currentPointIndex].position;
     }
 
     private void Update()
@@ -23,7 +23,7 @@ public class SawBlade : MonoBehaviour
 
         if (transform.position != currentPosition)
         {
-            transform.position = Vector3.Lerp(transform.position, wayPoint[1].transform.position, Timer);
+            transform.position = Vector3.Lerp(transform.position, wayPoint[1].position, Timer);
         }
         else
         {
