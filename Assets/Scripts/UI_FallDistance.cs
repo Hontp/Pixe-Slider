@@ -8,7 +8,7 @@ public class UI_FallDistance : MonoBehaviour
     private Text label;
     public float distance;
     public int TILESIZE = 16;
-    public Text score;
+    
     public Text highScore;
 
     // Start is called before the first frame update
