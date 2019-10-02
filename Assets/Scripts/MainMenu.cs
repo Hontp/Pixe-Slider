@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
    
     public float scrollSpeed;
     private Vector3 startPos;
+   
 
     void Start()
     {
         startPos = transform.position;
+        
     }
 
     float newPos;

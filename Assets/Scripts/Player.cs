@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
 
     public WallScroll ws;
     public GameObject blood;
+    UI_FallDistance distanceScore; 
 
     // Start is called before the first frame update
     void Start()
@@ -317,6 +318,7 @@ public class Player : MonoBehaviour
            // sr.enabled = false;
 
             state = playerState.DEATH;
+            
             sr.sprite = playerPoses[3];
 
             ws.gravity = 0;
@@ -328,6 +330,9 @@ public class Player : MonoBehaviour
             Instantiate(blood, transform);
             
             Invoke("restart", 1.5f);
+            PlayerPrefs.Save();
+            print(" our score is" +PlayerPrefs.GetInt("Highscore"));
+            
         }
 
         
