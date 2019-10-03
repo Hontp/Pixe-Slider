@@ -14,12 +14,6 @@ public class Player : MonoBehaviour
     public bool touchingWallRight;
     public bool touchingWallLeft;
 
-    public float minjumpSpeed;
-    public float maxjumpSpeed;
-
-    public float minSwipe;
-    public float maxSwipe;
-
     public float friction;
 
     public float gravityWallSlideModifier;
@@ -41,6 +35,9 @@ public class Player : MonoBehaviour
     public float cameraLerpTime;
 
     public float playerGravity;
+
+    public float force;
+
     public enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
     public float climbingSpeed;
     public playerState state = playerState.SLIDING;
@@ -115,20 +112,9 @@ public class Player : MonoBehaviour
                             if (touchingWallLeft)
                             {
                                 state = playerState.JUMPING;
-                                //rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                //limit the max speed
-                                if (swipeSpeed > maxjumpSpeed)
-                                {
-                                    swipeSpeed = maxjumpSpeed;
-                                }
-                                if (swipeSpeed < minjumpSpeed)
-                                {
-                                    swipeSpeed = minjumpSpeed;
-                                }
 
-                                float force = swipeSpeed * jumpSpeed;
                                 //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
-                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.right * force / swipeTime, ForceMode2D.Impulse);
                                 Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
@@ -142,20 +128,8 @@ public class Player : MonoBehaviour
                             {
                                 state = playerState.JUMPING;
 
-                                if (swipeSpeed < -maxjumpSpeed)
-                                {
-                                    swipeSpeed = -maxjumpSpeed;
-                                }
-                                if (swipeSpeed > -minjumpSpeed)
-                                {
-                                    swipeSpeed = -minjumpSpeed;
-                                }
-
-
-
-                                float force = swipeSpeed * jumpSpeed;
                                 Debug.Log(force);
-                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.left * force / swipeTime, ForceMode2D.Impulse);
                                 Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
@@ -208,20 +182,8 @@ public class Player : MonoBehaviour
                             if (touchingWallLeft)
                             {
                                 state = playerState.JUMPING;
-                                //rb.velocity = new Vector2(rb.velocity.x, 0f);
-                                //limit the max speed
-                                if (swipeSpeed > maxSwipe)
-                                {
-                                    swipeSpeed = maxjumpSpeed;
-                                }
-                                if (swipeSpeed < minSwipe)
-                                {
-                                    swipeSpeed = minjumpSpeed;
-                                }
 
-                                float force = swipeSpeed * jumpSpeed;
-                                //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
-                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.right * force/swipeTime, ForceMode2D.Impulse);
                                 Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
@@ -235,20 +197,9 @@ public class Player : MonoBehaviour
                             {
                                 state = playerState.JUMPING;
 
-                                if (swipeSpeed < -maxSwipe)
-                                {
-                                    swipeSpeed = -maxjumpSpeed;
-                                }
-                                if (swipeSpeed > -minSwipe)
-                                {
-                                    swipeSpeed = -minjumpSpeed;
-                                }
 
-
-
-                                float force = swipeSpeed * jumpSpeed;
                                 Debug.Log(force);
-                                rb.AddForce(Vector2.right * force * Time.deltaTime, ForceMode2D.Impulse);
+                                rb.AddForce(Vector2.left * force / swipeTime, ForceMode2D.Impulse);
                                 Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
@@ -273,8 +224,8 @@ public class Player : MonoBehaviour
         // Smoke trails only on if the player is sliding on wall
         var rightem = partRightSlide.emission;
         var leftem = partLeftSlide.emission;
-        rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 4 : 0;
-        leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 4 : 0;
+        rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 16 : 0;
+        leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 16 : 0;
 
 
         #endregion
