@@ -10,9 +10,12 @@ public class SawBladeHorizontal : MonoBehaviour
     public WallScroll myScroll;
     public float maxDistance;
     public float currentDistance;
+
     bool moveRight;
     Vector3 startPos;
-    // Start is called before the first frame update
+    float timer;
+
+
     void Start()
     {
        
@@ -20,9 +23,10 @@ public class SawBladeHorizontal : MonoBehaviour
         startPos = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
         wallSpeed = myScroll.speed;
 
         currentDistance = (transform.position - startPos).x;
@@ -48,6 +52,12 @@ public class SawBladeHorizontal : MonoBehaviour
             transform.position = transform.position + Vector3.right * -Speed;
         }
 
+        if (!transform.GetComponent<SpriteRenderer>().isVisible && timer > 5.0f)
+        {
+            Destroy(gameObject);
+
+            timer = 0;
+        }
 
     }
 }

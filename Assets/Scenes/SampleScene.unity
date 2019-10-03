@@ -5949,6 +5949,7 @@ MonoBehaviour:
   - {r: 0.990566, g: 0.47155806, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.9528302, g: 0.13034001, b: 0.5219609, a: 1}
+  - {r: 0.71226424, g: 0, b: 0.9716981, a: 1}
   myScroll: {fileID: 711686579}
 --- !u!4 &954709579
 Transform:
@@ -11795,6 +11796,51 @@ MonoBehaviour:
   partRightSlide: {fileID: 742759989}
   ws: {fileID: 711686579}
   blood: {fileID: 6121671308286885370, guid: 4f0cee5c78d773346a017bbccf97dbfd, type: 3}
+--- !u!1 &1916986568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916986570}
+  - component: {fileID: 1916986569}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1916986569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916986568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ffea2c1d343bd44b7c8c96d7db3330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnController: {fileID: 388554751}
+  Wall: {fileID: 711686578}
+--- !u!4 &1916986570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916986568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.621709, y: -25.84118, z: -6.5210695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023256570
 GameObject:
   m_ObjectHideFlags: 0
