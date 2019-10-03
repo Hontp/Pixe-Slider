@@ -485,10 +485,14 @@ MonoBehaviour:
   - {fileID: 71864596}
   - {fileID: 71864596}
   spawnTime: 1
+  spawnTimer: 0
+  ws: {fileID: 711686579}
   HazardLeft: {fileID: 8269964614783549322, guid: 1c89547abfd88ae45b810e92305cbd4b,
     type: 3}
   HazardRight: {fileID: 8269964614783549322, guid: 67d030f34440a694ea1166413a9c0027,
     type: 3}
+  distanceToSpawn: 10
+  last: 0
 --- !u!4 &388554753
 Transform:
   m_ObjectHideFlags: 0
@@ -11777,9 +11781,9 @@ MonoBehaviour:
   friction: 0.96
   gravityWallSlideModifier: 20
   startTouchTime: 0
-  swipeTimeCutOff: 0.4
+  swipeTimeCutOff: 0.55
   ledgeBoost: 1
-  cliffGrabVelocityDampen: 0.5
+  cliffGrabVelocityDampen: 0.7
   camOffset: -4
   playerPoses:
   - {fileID: -2950419081503125711, guid: 7105a33e26b2a41f8b46d4d9947598c3, type: 3}

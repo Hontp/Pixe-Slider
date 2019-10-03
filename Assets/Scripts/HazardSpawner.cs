@@ -8,15 +8,34 @@ public class HazardSpawner : MonoBehaviour
     public GameObject Hazards;                              //The Hazard prefab to eb spawned.
     public Transform[] SpawnLocations;                      //An array of locations the hazard can spawn from.
     public float spawnTime = 3f;                            //How Long Between each Spawn.
+    public float spawnTimer = 0f;
+    public WallScroll ws;
 
     public GameObject HazardLeft;
     public GameObject HazardRight;
 
+    public float distanceToSpawn;
+    public float last;
+    private float timeStart;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeStart = Time.time;
         //continuosly call the spawn location after the spawnTime has finished counting and then repeats itself.
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        //InvokeRepeating("Spawn", spawnTime, spawnTime);
+    }
+
+    private void Update()
+    {
+
+       
+        if ( (int)(ws.distance * (20 * 16) / 16) % distanceToSpawn == 0 && (int) (ws.distance * (20 * 16) / 16) != last)
+        {
+            //Debug.Log(" sdfg");
+            Spawn();
+        }
+        last = (int)(ws.distance * (20 * 16) / 16);
     }
 
     public void Spawn()

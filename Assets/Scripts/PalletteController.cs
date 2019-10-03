@@ -36,7 +36,7 @@ public class PalletteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myScroll.distance * 20.0f >= 500.0f && myScroll.distance * 20.0f < 1000.0f)
+        if (myScroll.distance * 20.0f >= 250.0f && myScroll.distance * 20.0f < 500.0f)
         {
             for (int i = 0; i < bgRender.Count; i++)
             {
@@ -54,7 +54,7 @@ public class PalletteController : MonoBehaviour
 
             }
         }
-        else if (myScroll.distance * 20.0f >= 1000.0f && myScroll.distance * 20.0f < 1500.0f)
+        else if (myScroll.distance * 20.0f >= 500.0f && myScroll.distance * 20.0f < 750.0f)
         {
             for (int i = 0; i < bgRender.Count; i++)
             {
@@ -73,7 +73,7 @@ public class PalletteController : MonoBehaviour
             }
 
         }
-        else if (myScroll.distance * 20.0f >= 1500.0f && myScroll.distance * 20.0f < 2000.0f)
+        else if (myScroll.distance * 20.0f >= 750.0f && myScroll.distance * 20.0f < 1000.0f)
         {
             for (int i = 0; i < bgRender.Count; i++)
             {
@@ -92,7 +92,7 @@ public class PalletteController : MonoBehaviour
             }
 
         }
-        else if (myScroll.distance * 20.0f > 2000.0f)
+        else if (myScroll.distance * 20.0f > 1000.0f)
         {
             for (int i = 0; i < bgRender.Count; i++)
             {
