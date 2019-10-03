@@ -92,7 +92,7 @@ public class PalletteController : MonoBehaviour
             }
 
         }
-        else if (myScroll.distance * 20.0f > 1000.0f)
+        else if (myScroll.distance * 20.0f >= 2000.0f && myScroll.distance * 20.0f < 3000.0f)
         {
             for (int i = 0; i < bgRender.Count; i++)
             {
@@ -106,6 +106,25 @@ public class PalletteController : MonoBehaviour
                 {
                     h.transform.GetChild(0).GetComponent<SpriteRenderer>().color = color[4];
                     h.transform.GetChild(1).GetComponent<SpriteRenderer>().color = color[4];
+                }
+
+            }
+
+        }
+        else if (myScroll.distance * 20.0f > 3000.0f)
+        {
+            for (int i = 0; i < bgRender.Count; i++)
+            {
+                bgRender[i].color = color[5];
+                currentColor = color[5];
+
+
+                //find all the existing hazards and change thier color
+                HazardController[] hazards = FindObjectsOfType<HazardController>();
+                foreach (HazardController h in hazards)
+                {
+                    h.transform.GetChild(0).GetComponent<SpriteRenderer>().color = color[5];
+                    h.transform.GetChild(1).GetComponent<SpriteRenderer>().color = color[5];
                 }
 
             }

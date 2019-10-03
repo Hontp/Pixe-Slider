@@ -11,6 +11,7 @@ public class SawBlade : MonoBehaviour
 
     public int currentPointIndex;
     float Timer;
+    float totalSpeed;
 
     private void Start()
     {
@@ -21,9 +22,18 @@ public class SawBlade : MonoBehaviour
     private void Update()
     {
 
-        Timer += Time.deltaTime * Speed;
+        Timer += Time.deltaTime;
 
-        transform.position = transform.position + Vector3.up * Timer;
-                
+        totalSpeed = Timer * Speed;
+
+        transform.position = transform.position + Vector3.up * totalSpeed;
+     
+        
+        if (!transform.GetComponent<SpriteRenderer>().isVisible && Timer > 5.0f)
+        {
+            Destroy(gameObject);
+
+            Timer = 0;
+        }
     }
 }
