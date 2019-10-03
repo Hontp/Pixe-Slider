@@ -843,6 +843,7 @@ MonoBehaviour:
   ws: {fileID: 711686579}
   distance: 0
   TILESIZE: 16
+  highScore: {fileID: 0}
 --- !u!114 &693270275
 MonoBehaviour:
   m_ObjectHideFlags: 0
