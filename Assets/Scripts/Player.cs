@@ -9,20 +9,20 @@ public class Player : MonoBehaviour
 
     public float swipeMultiplier;
 
-    public float jumpSpeed;
+    //public float jumpSpeed;
 
     public bool touchingWallRight;
     public bool touchingWallLeft;
 
     public float friction;
 
-    public float gravityWallSlideModifier;
+   // public float gravityWallSlideModifier;
 
     public float startTouchTime;
 
     public float swipeTimeCutOff;
 
-    public float ledgeBoost = 1f;
+    //public float ledgeBoost = 1f;
 
     public float cliffGrabVelocityDampen = 0.75f;
 
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     public float force;
 
     public enum playerState {SLIDING, JUMPING, READYJUMP, DEATH};
-    public float climbingSpeed;
+   // public float climbingSpeed;
     public playerState state = playerState.SLIDING;
 
     private Rigidbody2D rb;
@@ -49,7 +49,12 @@ public class Player : MonoBehaviour
 
     public WallScroll ws;
     public GameObject blood;
-    UI_FallDistance distanceScore; 
+
+
+    [Header("SFX")]
+    public AudioClip jump,wallHit,die,slow;
+    private AudioSource audioSource;
+   // UI_FallDistance distanceScore; 
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +62,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         sr.flipX = !sr.flipX;
         rb = GetComponent<Rigidbody2D>();
-
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -112,6 +117,7 @@ public class Player : MonoBehaviour
                             if (touchingWallLeft)
                             {
                                 state = playerState.JUMPING;
+                                audioSource.PlayOneShot(jump);
 
                                 //rb.AddForce(Vector2.right * swipeSpeed * Time.deltaTime * jumpSpeed + new Vector2( -rb.velocity.y * gravityWallSlideModifier, 0), ForceMode2D.Impulse);
                                 rb.AddForce(Vector2.right * force / swipeTime, ForceMode2D.Impulse);
@@ -127,6 +133,7 @@ public class Player : MonoBehaviour
                             if (touchingWallRight)
                             {
                                 state = playerState.JUMPING;
+                                audioSource.PlayOneShot(jump);
 
                                 Debug.Log(force);
                                 rb.AddForce(Vector2.left * force / swipeTime, ForceMode2D.Impulse);
@@ -175,16 +182,16 @@ public class Player : MonoBehaviour
                     if (swipeTime < swipeTimeCutOff)
                     {
 
-                        Debug.Log("SWIPE TIME " + swipeTime + "    deltaPosition" + deltaPosition);
+                        //Debug.Log("SWIPE TIME " + swipeTime + "    deltaPosition" + deltaPosition);
 
                         if (deltaPosition > 0)
                         {
                             if (touchingWallLeft)
                             {
                                 state = playerState.JUMPING;
-
+                                audioSource.PlayOneShot(jump);
                                 rb.AddForce(Vector2.right * force/swipeTime, ForceMode2D.Impulse);
-                                Debug.Log(swipeSpeed + "    " + force);
+                               // Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 //rb.gravityScale = 2.5f;
@@ -197,10 +204,10 @@ public class Player : MonoBehaviour
                             {
                                 state = playerState.JUMPING;
 
-
-                                Debug.Log(force);
+                                audioSource.PlayOneShot(jump);
+                                //Debug.Log(force);
                                 rb.AddForce(Vector2.left * force / swipeTime, ForceMode2D.Impulse);
-                                Debug.Log(swipeSpeed + "    " + force);
+                                //Debug.Log(swipeSpeed + "    " + force);
                                 touchingWallLeft = false;
                                 touchingWallRight = false;
                                 //rb.gravityScale = 2.5f;
@@ -224,9 +231,18 @@ public class Player : MonoBehaviour
         // Smoke trails only on if the player is sliding on wall
         var rightem = partRightSlide.emission;
         var leftem = partLeftSlide.emission;
-        rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 16 : 0;
-        leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 16 : 0;
+        
+        if(state != playerState.READYJUMP)
+        {
+        rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 8 : 0;
+        leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 8 : 0;
+        }
+        else
+        {
+             rightem.rateOverTime = touchingWallRight && state != playerState.DEATH ? 32 : 0;
+            leftem.rateOverTime = touchingWallLeft && state != playerState.DEATH ? 32 : 0;
 
+        }
 
         #endregion
 
@@ -238,6 +254,8 @@ public class Player : MonoBehaviour
                 break;
             case playerState.READYJUMP:
                 sr.sprite = playerPoses[1];
+                //if(!audioSource.isPlaying)
+                //audioSource.PlayOneShot(slow);
                 break;
             case playerState.JUMPING:
                 sr.sprite = playerPoses[2];
@@ -269,7 +287,7 @@ public class Player : MonoBehaviour
            // sr.enabled = false;
 
             state = playerState.DEATH;
-            
+            audioSource.PlayOneShot(die);
             sr.sprite = playerPoses[3];
 
             ws.gravity = 0;
@@ -282,7 +300,7 @@ public class Player : MonoBehaviour
             
             Invoke("restart", 1.5f);
             PlayerPrefs.Save();
-            print(" our score is" +PlayerPrefs.GetInt("Highscore"));
+           
             
         }
 
@@ -298,6 +316,7 @@ public class Player : MonoBehaviour
     {
         if(collision.transform.CompareTag("leftWall"))
         {
+            audioSource.PlayOneShot(wallHit);
             touchingWallLeft = true;
             //ws.speed -= rb.velocity.y;
 
@@ -313,6 +332,7 @@ public class Player : MonoBehaviour
         }
         if (collision.transform.CompareTag("rightWall"))
         {
+            audioSource.PlayOneShot(wallHit);
             touchingWallRight = true;
             //ws.speed -= rb.velocity.y;
             //rb.gravityScale = 0f;
